@@ -1,0 +1,107 @@
+/* @media only screen and (max-width: 899px) {
+  .displayNoneSearch {
+    display: none;
+  }
+  .iconbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.iconbar {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+} */
+
+/* .mainSearchNav { */
+.navbar {
+  background-color: #192a3e;
+  color: white;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+  box-shadow: -3px 3px 6px -1px rgba(25, 42, 62, 0.5);
+  -webkit-box-shadow: -3px 3px 6px -1px rgba(25, 42, 62, 0.5);
+  -moz-box-shadow: -3px 3px 6px -1px rgba(25, 42, 62, 0.5);
+}
+
+.navbar.open {
+  max-height: 200px;
+}
+
+.banner {
+  display: flex;
+  /* justify-content: space-around; */
+}
+.brand {
+  background-color: #555;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-button {
+  position: relative;
+}
+
+button {
+  background-color: #192a3e;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.nested-nav {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #555;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  z-index: 1;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.nested-icon {
+  background-color: #192a3e;
+  padding: 5px;
+}
+
+.catLink:hover {
+  text-decoration: underline;
+}
+
+.myDiv {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 1s ease-in-out;
+}
+.myDiv p:hover {
+  /* color: white; */
+  /* background-color: #192a3e; */
+  opacity: 1;
+  /* width: 100%; */
+}
+
+.myDiv.open {
+  max-height: 300px;
+  transition: max-height 1s ease-in-out;
+}
+/* } */
+
+@media only screen and (max-width: 899px) {
+  .mobViewNav {
+    display: none;
+  }
+  .banner {
+    display: flex;
+    justify-content: space-around;
+  }
+}

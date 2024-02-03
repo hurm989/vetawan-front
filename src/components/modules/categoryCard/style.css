@@ -1,0 +1,25 @@
+.imgblur {
+  /* filter: blur(1px); */
+}
+/* .imgcategory {
+  background-image: url("../../../assets/category/cardone.jpg");
+} */
+.bgimg {
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+}
+.one {
+  background-image: url("../../../assets/category/cardone.jpg");
+}
+.two {
+  background-image: url("../../../assets/category/cardtwo.png");
+}
+.three {
+  background-image: url("../../../assets/category/cardthree.jpg");
+}
+.four {
+  background-image: url("../../../assets/category/cardfour.jpg");
+}

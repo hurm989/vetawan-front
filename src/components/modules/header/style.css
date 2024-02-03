@@ -1,0 +1,28 @@
+.header:hover {
+  color: #ffc715;
+}
+.head {
+  /* background-color: rgb(197, 189, 189); */
+  background-color: #f5f5f5;
+  /* background-color: #f5f5f5; */
+  /* border-bottom: 1px solid #192a3e; */
+  /* border-top: 1px solid #192a3e; */
+}
+.contactus {
+  justify-content: end;
+}
+.availablity {
+  justify-content: start;
+}
+
+@media only screen and (max-width: 768px) {
+  .contactus {
+    justify-content: center;
+  }
+  .availablity {
+    justify-content: center;
+  }
+  .availablity > p {
+    text-align: center;
+  }
+}

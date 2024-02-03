@@ -1,0 +1,15 @@
+.bannerColor {
+  background-color: #f6f7fb;
+  min-height: 150px;
+}
+
+@media only screen and (max-width: 899px) {
+  .align-center-banner {
+    /* align-items-center justify-content-center */
+    align-items: center;
+    justify-content: center;
+  }
+  .margin-banner {
+    margin-top: 10px;
+  }
+}

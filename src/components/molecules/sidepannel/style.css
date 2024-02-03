@@ -1,0 +1,19 @@
+.mainBox {
+  border: 2px solid #192a3e;
+  border-bottom: 0px;
+  padding: 15px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #192a3e;
+}
+.mainBoxLast {
+  border: 2px solid #192a3e;
+  /* border-bottom: 0px; */
+  padding: 15px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.colorBox {
+  background-color: #192a3e;
+  color: white !important;
+}

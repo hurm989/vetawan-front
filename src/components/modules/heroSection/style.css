@@ -1,0 +1,4 @@
+/* HeroSection.css */
+.blurry-image {
+  filter: blur(2spx); /* Adjust the blur amount as needed */
+}

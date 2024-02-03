@@ -1,0 +1,30 @@
+/* .card {
+  border: 1px solid rgb(232, 218, 218);
+  height: 180px;
+}
+.cardHeight {
+  height: 180px;
+}
+.discfont {
+  font-size: "0.5rem";
+}
+@media only screen and (max-width: 899px) {
+  .discfont {
+    font-size: "0.1rem" !important
+    ;
+  }
+} */
+.card {
+  border: 1px solid rgb(226, 215, 215);
+  /* box-shadow: box-shadow: -1px 1px 10px -8px rgba(255,255,255,0.75); */
+  /* ; */
+  /* box-shadow: -1px 1px 10px  0px rgba(28, 26, 26, 0.75); */
+
+  /* box-shadow: -1px 1px 10px 0px rgba(227, 205, 205, 0.75); */
+}
+.bgRow {
+  background-color: #f7f6f9;
+}
+.marginRow {
+  margin-top: 5px;
+}

@@ -1,0 +1,14 @@
+.footerBackground {
+  background-color: #192a3e;
+}
+.footerHeight {
+  min-height: 380px;
+}
+
+@media only screen and (min-width: 768px) {
+  .desktopView {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

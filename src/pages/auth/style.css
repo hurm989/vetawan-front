@@ -1,0 +1,7 @@
+.stickyHeader {
+  position: sticky;
+  top: 0;
+}
+.headerHeight {
+  height: 85vh;
+}

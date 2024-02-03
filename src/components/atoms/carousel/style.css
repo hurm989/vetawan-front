@@ -1,0 +1,11 @@
+.mobView {
+  display: none;
+}
+@media only screen and (max-width: 899px) {
+  .mobView {
+    display: block;
+  }
+  .desktopView {
+    display: none;
+  }
+}

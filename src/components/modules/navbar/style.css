@@ -1,0 +1,12 @@
+.d-none {
+  opacity: 1;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 991px) {
+  .d-none {
+    max-height: 0;
+    opacity: 0;
+    display: none;
+  }
+}

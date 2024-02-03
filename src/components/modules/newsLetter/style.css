@@ -1,0 +1,20 @@
+.marginTopnews {
+  margin: 90px 0px;
+}
+.btnNews {
+  border-radius: 0px 30px 30px 0px !important;
+}
+@media only screen and (max-width: 899px) {
+  .btnNews {
+    border-radius: 4px !important;
+  }
+  .paddingNews {
+    padding: 5px 20px;
+  }
+}
+
+@media only screen and (max-width: 899px) {
+  .paddingNews {
+    padding: 5px 30px;
+  }
+}
