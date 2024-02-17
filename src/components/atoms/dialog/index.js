@@ -131,7 +131,16 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useNavigate } from "react-router-dom";
 
 export default function BAScrollDialog(props) {
-  const { productName, imgArr, prodPrice, prodCode, imgsign, prodDisc } = props;
+  const {
+    productName,
+    imgArr,
+    prodPrice,
+    prodCode,
+    imgsign,
+    prodDisc,
+    stock,
+    product_id,
+  } = props;
   const [open, setOpen] = React.useState(false);
   const [scroll, setScroll] = React.useState("paper");
   const [count, setCount] = React.useState(0);
@@ -239,7 +248,11 @@ export default function BAScrollDialog(props) {
                       <NavigateNextIcon />
                     </p>
                     <div style={{ width: "300px" }}>
-                      <img src={imgsign} width="100%" height="100%" />
+                      <img
+                        src={`https://vetawan.vercel.app/${imgsign}`}
+                        width="100%"
+                        height="100%"
+                      />
                     </div>
                     <p
                       style={{
@@ -368,7 +381,9 @@ export default function BAScrollDialog(props) {
                               </p>
                               <p
                                 onClick={() => {
-                                  setCount(count + 1);
+                                  if (count < stock) {
+                                    setCount(count + 1);
+                                  }
                                 }}
                                 className="cursorPointer fs-18 text-primary"
                               >
@@ -390,7 +405,10 @@ export default function BAScrollDialog(props) {
                     style={{ padding: "15px 10px 0px 10px" }}
                   >
                     <p
-                      onClick={() => navigate("/details/122")}
+                      onClick={() => {
+                        navigate(`/details/${product_id}`);
+                        window.location.reload();
+                      }}
                       className="text-primary fs-12"
                       style={{ paddingRight: "5px" }}
                     >

@@ -120,62 +120,11 @@ export default function ProductCards(props) {
     image,
     imgArr,
     prodCode,
+    rating,
+    stock,
+    product_id,
   } = props;
   return (
-    // <Grid item md={4} sm={6} xs={12} className="mainContainer">
-    //   <Card style={{}}>
-    //     <CardContent style={{ height: "200px" }}>
-    //       <div className="d-flex justify-content-between align-items-start">
-    //         <Typography
-    //           gutterBottom
-    //           variant="h6"
-    //           component="div"
-    //           style={{ fontFamily: "Poppins-SemiBold", fontSize: "16px" }}
-    //         >
-    //           {headingOne}
-    //         </Typography>
-    //         <Typography variant="body2" color="text.secondary">
-    //           <Rating name="read-only" value={3} readOnly className="mt-1" />
-    //         </Typography>
-    //       </div>
-    //       <Grid container justifyContent="space-between" alignItems="center">
-    //         <Grid item xs={6}>
-    //           <p
-    //             // variant="h6"
-    //             style={{ fontFamily: "Poppins-Medium" }}
-    //             color="text.secondary"
-    //             className="text-gray discfont"
-    //           >
-    //             {disc}
-    //           </p>
-    //         </Grid>
-    //         <Grid item xs={6}>
-    //           <div>
-    //             <CardMedia
-    //               style={{ backgroundSize: "contain" }}
-    //               sx={{ width: "100%", height: 120 }}
-    //               image={imgproduct}
-    //               title="green iguana"
-    //             />
-    //           </div>
-    //         </Grid>
-    //       </Grid>
-    //     </CardContent>
-    //     <CardActions className="d-flex justify-content-between">
-    //       <Button
-    //         size="small"
-    //         style={{ fontFamily: "Poppins-SemiBold", fontSize: "14px" }}
-    //         className="text-primary Poppins-SemiBold"
-    //       >
-    //         Add to Cart
-    //       </Button>
-    //       <div className="px-1">
-    //         <FavoriteIcon style={{ color: "#D21F3C", fontSize: "24px" }} />
-    //       </div>
-    //     </CardActions>
-    //   </Card>
-    // </Grid>
-
     <Grid item md={3}>
       <Box className="card">
         <Grid container className="p1">
@@ -211,7 +160,7 @@ export default function ProductCards(props) {
                       width="100%"
                       height="100%"
                       style={{ objectFit: "contain" }}
-                      src={image}
+                      src={`https://vetawan.vercel.app/${image}`}
                       alt={productName}
                     />
                   </div>
@@ -232,7 +181,7 @@ export default function ProductCards(props) {
                   <div className="px-1 Poppins-Medium">
                     <Rating
                       name="read-only"
-                      value={5}
+                      value={rating}
                       readOnly
                       className="mt-1"
                     />
@@ -253,6 +202,8 @@ export default function ProductCards(props) {
                       prodCode={prodCode}
                       imgsign={image}
                       prodDisc={description}
+                      stock={stock}
+                      product_id={product_id}
                     />
                     {/* <Button
                       variant="outlined"

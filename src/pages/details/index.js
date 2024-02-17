@@ -30,6 +30,8 @@ import milkPreventing from "../../assets/popular/MilkSuckling/1.png";
 import milkPreventTwo from "../../assets/popular/MilkSuckling/2.png";
 import milkPreventThree from "../../assets/popular/MilkSuckling/3.png";
 import milkPreventFour from "../../assets/popular/MilkSuckling/4.png";
+import { Get } from "../../config/apiMethod";
+import { useParams } from "react-router-dom";
 
 const allImg = [
   milkPreventing,
@@ -40,12 +42,54 @@ const allImg = [
 export const ViewAllDetails = () => {
   const [showReview, setShowReview] = useState(false);
   const [renderImg, setRenderImg] = useState(0);
+  const [product, setProduct] = useState();
+  const [allProducts, setAllProducts] = useState();
+  const [productLoadin, setProductLoading] = useState(false);
+  const params = useParams();
+  const getAllProducts = async () => {
+    setProductLoading(true);
+    try {
+      const response = await Get(`/store/api/products`);
+      // console.log(response.products, "ALLPRODUCTSSSS");
+      setAllProducts(response.products);
+      setProductLoading(false);
+      // setAllProducts(response)
+      // const exampleCategories = response?.categories.map((category) => {
+      //   const subcategories = response?.subcategories
+      //     .filter((subcategory) => subcategory?.category === category.id)
+      //     .map((subcategory) => subcategory?.subcategory_name);
+
+      //   return {
+      //     name: category?.category_name,
+      //     subcategories: subcategories,
+      //   };
+      // });
+      // setCategories(exampleCategories);
+    } catch (error) {
+      // setLoading(false);
+      setProductLoading(false);
+    }
+  };
+  const getProduct = async () => {
+    // setProductLoading(true);
+    try {
+      const response = await Get(`/store/api/product/${params?.id}`);
+      // console.log(response.products, "ALLPRODUCTSSSS");
+      setProduct(response.single_product);
+    } catch (error) {
+      // setLoading(false);
+      // setProductLoading(false);
+    }
+  };
   useEffect(() => {
+    getProduct();
+    getAllProducts();
     window.scrollTo(0, 0);
   }, []);
   return (
     <>
       {" "}
+      {console.log(product, "PRODUCTSS")}
       <div className="mobAppBar">
         <MobAppBar />
       </div>
@@ -76,7 +120,10 @@ export const ViewAllDetails = () => {
                   style={{ fontSize: "52px" }}
                 />
                 <div className="text-center">
-                  <img src={allImg[renderImg]} width="80%" />
+                  <img
+                    src={`https://vetawan.vercel.app/${product?.image}`}
+                    width="80%"
+                  />
                 </div>
                 <ArrowRight
                   onClick={() => {
@@ -90,7 +137,20 @@ export const ViewAllDetails = () => {
               </div>
               <div className="px-1">
                 <Grid container>
-                  {allImg.map((e, i) => {
+                  {/* <Grid item xs={3} onClick={() => setRenderImg(i)}>
+                    <div className="cursorPointer">
+                      <img src={e} width="100%" />
+                    </div>
+                  </Grid> */}
+                  <Grid item xs={3}>
+                    <div className="cursorPointer">
+                      <img
+                        src={`https://vetawan.vercel.app/${product?.image}`}
+                        width="100%"
+                      />
+                    </div>
+                  </Grid>
+                  {/* {allImg.map((e, i) => {
                     return (
                       <Grid item xs={3} onClick={() => setRenderImg(i)}>
                         <div className="cursorPointer">
@@ -98,7 +158,7 @@ export const ViewAllDetails = () => {
                         </div>
                       </Grid>
                     );
-                  })}
+                  })} */}
 
                   {/* <Grid item xs={3}>
                     <div className="cursorPointer">
@@ -127,12 +187,15 @@ export const ViewAllDetails = () => {
                 <div>
                   <Rating value={5} />
                   <p className="Poppins-SemiBold" style={{ fontSize: "2rem" }}>
-                    Milk Sucking Preventers
+                    {product?.product_name ?? "-"}
                   </p>
                   <p className="Poppins-Regular fs-14">
                     Produc Code : IMT42469-GREY-S
                   </p>
-                  <p className="Poppins-Medium fs-24 mb-1">$ 600.00</p>
+                  <p className="Poppins-Medium fs-24 mb-1">
+                    {" "}
+                    {product?.price ?? "-"}
+                  </p>
                 </div>
                 <div className="mb-3">
                   <Grid container>
@@ -187,16 +250,13 @@ export const ViewAllDetails = () => {
                 </div>
                 <BAButton fontSize="12px" value="Add to cart" />
                 <div className="mt-3">
-                  <p className="fs-18">
-                    VAWAN Milk sucking preventers offers the solution to a
-                    common challenge in livestock management.
-                  </p>
+                  <p className="fs-18">{product?.product_description ?? "-"}</p>
                 </div>
               </div>
             </Grid>
           </Grid>
         </div>
-        <div className="mb-5">
+        <div className="mt-5" style={{ marginTop: "100px" }}>
           <div className="d-flex flex-column px-2 my-1">
             <p
               className="Poppins-SemiBold text-primary reviwes"
@@ -207,19 +267,35 @@ export const ViewAllDetails = () => {
           </div>
           <div>
             <Grid container columnSpacing={2} rowSpacing={4} className="px-2">
-              {bestsellers_products.slice(0, 4)?.map((elem, index) => {
-                return (
-                  <ProductCards
-                    productName={elem?.productName}
-                    description={elem?.description}
-                    oldPrice={elem?.oldPrice}
-                    newPrice={elem?.newPrice}
-                    image={elem?.img ? elem?.img[0] : ""}
-                    imgArr={elem?.img}
-                    prodCode={elem?.prod_code ?? "-"}
-                  />
-                );
-              })}
+              {productLoadin
+                ? [1, 2, 3, 4].map((elem, i) => {
+                    return (
+                      <ProductCards
+                        productName={elem?.product_name}
+                        description={elem?.short_description}
+                        oldPrice={elem?.oldPrice}
+                        newPrice={elem?.price}
+                        image={elem?.image}
+                        prodCode={elem?.product_code ?? "-"}
+                        rating={0}
+                      />
+                    );
+                  })
+                : allProducts?.map((elem, index) => {
+                    return (
+                      <ProductCards
+                        productName={elem?.product_name}
+                        description={elem?.short_description}
+                        oldPrice={elem?.oldPrice}
+                        newPrice={elem?.price}
+                        image={elem?.image}
+                        prodCode={elem?.product_code ?? "-"}
+                        rating={5}
+                        stock={elem?.stock ?? ""}
+                        product_id={elem?.product_id}
+                      />
+                    );
+                  })}
             </Grid>
           </div>
         </div>
